@@ -1,0 +1,18 @@
+//Intégration du programme Python dans un code C/C++
+
+#include <stdio.h>
+#include <conio.h>
+#include <Python.h>
+
+int main()
+{
+	PyObject* pInt;
+
+	Py_Initialize();
+
+	PyRun_SimpleString("from time import sleep from picamera import PiCamera camera = PiCamera() camera.resolution = (1024, 768) camera.start_preview() sleep(2) camera.capture('testPhoto.jpg') camera.stop_preview() ");
+	
+	Py_Finalize();
+
+	return 0;
+}
