@@ -54,7 +54,6 @@ int main(void) {
         testDistance(&dist);
     }
     delay(1000);
-    }
  
     return 0;
 }
@@ -63,7 +62,7 @@ int main(void) {
 // If less than 30cm => LED is OFF
 // If more than 30cm => LED is ON
 void testDistance(int *distance){
-    if(distance < 30){
+    if(*distance < 30){
         digitalWrite(LED, 0);
     }
     else{
