@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int main(){
-    system("python camera.py"),
-    return 0;
+void initializeCamera(){
+    system("python camera.py");
 }

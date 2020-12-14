@@ -9,5 +9,6 @@
 #define camera_V2_h
 
 #include <stdio.h>
+void initializeCamera(void);
 
 #endif /* camera_V2_h */

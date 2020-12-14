@@ -11,6 +11,6 @@
 
 #include <stdio.h>
 
-int servoMotor(int argc, char *argv[]);
+int setServoMotor(int *angle, int *timeSetAngle);
 
 #endif /* servoMotorControl_h */

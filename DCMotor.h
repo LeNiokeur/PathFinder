@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 
-void setupDCMotors(int argc, char *argv[]);
+void initializeDCMotors(void);
 void moveForward(int *tempsMouvement);
 void moveBackward(int *tempsMouvement);
 void turnLeft(int *tempsMouvement);

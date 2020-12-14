@@ -28,7 +28,7 @@
 // Un L293D est nécessaire afin de piloter les moteurs dans les 2 sens
 
 
-void setupDCMotors(int argc, char *argv[])
+void initializeDCMotors()
 {
     // Pins vers les moteurs en sortie
     // Moteur 1

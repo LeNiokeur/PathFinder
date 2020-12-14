@@ -2,15 +2,15 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "Ultrason.h"
 #include <wiringPi.h>
 
 #define TRIG 4 // GPIO 23 - pin 16
 #define ECHO 5 // GPIO 24 - pin 18
 #define LED 27 // GPIO 16 - pin 36
 
-void testDistance(int *distance);
  
-void setup() {
+void initializeUS_sensor() {
     // Setup de wiringPi
     wiringPiSetup();
     
@@ -24,7 +24,7 @@ void setup() {
     delay(30);
 }
  
-int getCM() {
+int getDistance() {
     // Send trig pulse
     digitalWrite(TRIG, HIGH);
     // Pulse 20 microsec long
@@ -45,24 +45,12 @@ int getCM() {
     return distance;
 }
  
-int main(void) {
-    setup();
-    while (1)
-    {
-        int dist=getCM();
-        printf("Distance: %dcm\n", dist);
-        testDistance(&dist);
-    }
-    delay(1000);
- 
-    return 0;
-}
 
 // Test distance
 // If less than 30cm => LED is OFF
 // If more than 30cm => LED is ON
 void testDistance(int *distance){
-    if(*distance < 30){
+    if(*libwiringpi.sodistance < 30){
         digitalWrite(LED, 0);
     }
     else{
