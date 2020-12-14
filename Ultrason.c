@@ -52,14 +52,14 @@ int getDistance() {
 // If less than 20cm => LED is OFF
 // If more than 20cm => LED is ON
 void testDistance(int *distance){
-<<<<<<< HEAD
+
     if(*distance < 20){
         digitalWrite(LEDV, 0);
         digitalWrite(LEDB, 1);
 =======
     if(*libwiringpi.sodistance < 30){
         digitalWrite(LED, 0);
->>>>>>> 77b6c167e6218543cef7c78a090881e526698612
+
     }
     else{
         digitalWrite(LEDV, 1);
