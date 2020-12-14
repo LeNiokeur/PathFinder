@@ -11,7 +11,7 @@
 #define LEDB 2
 
  
-void initializeUS_sensor() {
+void setup() {
     // Setup de wiringPi
     wiringPiSetup();
     
@@ -51,18 +51,28 @@ int getDistance() {
 // Test distance
 // If less than 20cm => LED is OFF
 // If more than 20cm => LED is ON
-void testDistance(int *distance){
+void LED(int distance){
 
-    if(*distance < 20){
+    if(distance < 20){
         digitalWrite(LEDV, 0);
         digitalWrite(LEDB, 1);
-
-    if(*libwiringpi.sodistance < 30){
-        digitalWrite(LED, 0);
 
     }
     else{
         digitalWrite(LEDV, 1);
         digitalWrite(LEDB, 0);
+    
     }
 }
+
+int main(){
+    setup();
+    while(1)
+    {
+        int dist=getDistance();
+        printf("Distance: %dcm\n", dist);
+        LED(dist);
+    }
+    delay(1000);
+    return 0;
+    }
