@@ -56,7 +56,7 @@ void testDistance(int *distance){
     if(*distance < 20){
         digitalWrite(LEDV, 0);
         digitalWrite(LEDB, 1);
-=======
+
     if(*libwiringpi.sodistance < 30){
         digitalWrite(LED, 0);
 
