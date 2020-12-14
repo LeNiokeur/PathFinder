@@ -7,7 +7,8 @@
 
 #define TRIG 4 // GPIO 23 - pin 16
 #define ECHO 5 // GPIO 24 - pin 18
-#define LED 27 // GPIO 16 - pin 36
+#define LEDV 0 
+#define LEDB 2
 
  
 void initializeUS_sensor() {
@@ -17,7 +18,8 @@ void initializeUS_sensor() {
     // I/O
     pinMode(TRIG, OUTPUT);
     pinMode(ECHO, INPUT);
-    pinMode(LED, OUTPUT);
+    pinMode(LEDV, OUTPUT);
+    pinMode(LEDB, OUTPUT);
     
     //TRIG starts LOW
     digitalWrite(TRIG, LOW);
@@ -47,13 +49,20 @@ int getDistance() {
  
 
 // Test distance
-// If less than 30cm => LED is OFF
-// If more than 30cm => LED is ON
+// If less than 20cm => LED is OFF
+// If more than 20cm => LED is ON
 void testDistance(int *distance){
+<<<<<<< HEAD
+    if(*distance < 20){
+        digitalWrite(LEDV, 0);
+        digitalWrite(LEDB, 1);
+=======
     if(*libwiringpi.sodistance < 30){
         digitalWrite(LED, 0);
+>>>>>>> 77b6c167e6218543cef7c78a090881e526698612
     }
     else{
-        digitalWrite(LED, 1);
+        digitalWrite(LEDV, 1);
+        digitalWrite(LEDB, 0);
     }
 }
