@@ -71,8 +71,8 @@ int printDistance(){
     {
         int dist=getDistance();
         printf("Distance: %dcm\n", dist);
-        //LED(dist);
+        LED(dist);
         delay(1000);
     }
     return 0;
-    }
+}
