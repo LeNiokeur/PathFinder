@@ -24,6 +24,7 @@ int main(int argc, char *argv[]){
     
     // Test d'inclusion de Ultrason.c
     initializeUS_sensor();
+    printDistance();
     //TODO : pb avec la fonction testDistance lors de l'appel de
     // libWiringpi.sodistance ??
     while (1)

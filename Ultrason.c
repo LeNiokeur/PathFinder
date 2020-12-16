@@ -11,7 +11,7 @@
 #define LEDB 2
 
  
-void setup() {
+void initializeUS_sensor() {
     // Setup de wiringPi
     wiringPiSetup();
     
@@ -65,14 +65,14 @@ void LED(int distance){
     }
 }
 
-int main(){
-    setup();
+int printDistance(){
+    //setup();
     while(1)
     {
         int dist=getDistance();
         printf("Distance: %dcm\n", dist);
-        LED(dist);
+        //LED(dist);
+        delay(1000);
     }
-    delay(1000);
     return 0;
     }
