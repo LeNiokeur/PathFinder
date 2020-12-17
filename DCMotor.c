@@ -1,4 +1,4 @@
-//
+                                                                                                                                   //
 //  DCMotor.c
 //  RaspberryPi
 //
@@ -30,6 +30,7 @@
 
 void initializeDCMotors()
 {
+    wiringPiSetup();
     // Pins vers les moteurs en sortie
     // Moteur 1
     pinMode(Motor1InputA, OUTPUT);
@@ -40,8 +41,6 @@ void initializeDCMotors()
     pinMode(Motor2InputB, OUTPUT);
     pinMode(Motor2Enable, OUTPUT);
 }
-
-
 
 
 void moveForward(int *tempsMouvement) {
@@ -120,7 +119,6 @@ void turnRight(int *tempsMouvement) {
     digitalWrite(Motor2Enable,0);
 
 }
-
 
 
 
