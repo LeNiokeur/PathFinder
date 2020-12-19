@@ -95,7 +95,7 @@ void turnLeft() {
     digitalWrite(Motor2InputB,0);
     
     // Arret des moteurs après le temps renseigné
-    delayMicroseconds(500);
+    delay(500);
     digitalWrite(Motor1Enable,0);
     digitalWrite(Motor2Enable,0);
 
@@ -113,7 +113,7 @@ void turnRight() {
     digitalWrite(Motor2InputB,1);
     
     // Arret des moteurs après le temps renseigné
-    delayMicroseconds(500);
+    delay(500);
     digitalWrite(Motor1Enable,0);
     digitalWrite(Motor2Enable,0);
 
