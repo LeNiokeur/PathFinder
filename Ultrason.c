@@ -14,7 +14,6 @@
 void initializeUS_sensor() {
     // Setup de wiringPi
     wiringPiSetup();
-    git 
     // I/O
     pinMode(TRIG, OUTPUT);
     pinMode(ECHO, INPUT);
