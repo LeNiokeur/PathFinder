@@ -14,7 +14,7 @@
 void initializeDCMotors(void);
 void moveForward(void);
 void moveBackward(void);
-void turnLeft(int *tempsMouvement);
-void turnRight(int *tempsMouvement);
+void turnLeft(void);
+void turnRight(void);
 
 #endif /* DCMotor_h */
