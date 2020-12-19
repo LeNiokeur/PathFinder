@@ -7,14 +7,14 @@
 
 #define TRIG 4 // GPIO 23 - pin 16
 #define ECHO 5 // GPIO 24 - pin 18
-#define LEDV 0 
+#define LEDV 3 
 #define LEDB 2
 
  
 void initializeUS_sensor() {
     // Setup de wiringPi
     wiringPiSetup();
-    
+    git 
     // I/O
     pinMode(TRIG, OUTPUT);
     pinMode(ECHO, INPUT);
