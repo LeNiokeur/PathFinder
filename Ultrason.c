@@ -33,7 +33,6 @@ int getDistance() {
     delayMicroseconds(20);
     // Back to LOW
     digitalWrite(TRIG, LOW);
-
     // Wait for echo start
     while(digitalRead(ECHO) == LOW);
 
@@ -72,7 +71,7 @@ int printDistance(){
         int dist=getDistance();
         printf("Distance: %dcm\n", dist);
         LED(dist);
-        delay(1000);
+        delay(500);
     }
     return 0;
 }

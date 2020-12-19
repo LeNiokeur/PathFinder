@@ -12,8 +12,8 @@
 #include <stdio.h>
 
 void initializeDCMotors(void);
-void moveForward(int *tempsMouvement);
-void moveBackward(int *tempsMouvement);
+void moveForward(void);
+void moveBackward(void);
 void turnLeft(int *tempsMouvement);
 void turnRight(int *tempsMouvement);
 
