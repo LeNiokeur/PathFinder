@@ -37,38 +37,42 @@ int main(int argc, char *argv[]){
         printf("Distance: %dcm\n", dist);
         delay(100);
         if (dist<30){
+            LED(dist);
             moveBackward();
-            delay(1000);
+            initializeCamera();
+            delay(500);
             //Integrer servo pour connaitre la distance à gauche et à droite
             setServoMotor(&angle, &timeSetAngle);
-            delay(1000);
+            delay(500);
             
             //Valeur distance à gauche
             setServoMotor(&Leftangle, &timeSetAngle);
             LeftDistance = getDistance();
-            printf("\n   %d   \n", LeftDistance);
-            delay(1000);
+            delay(500);
             
             setServoMotor(&angle, &timeSetAngle);
-            delay(1000);
+            delay(500);
            
             //Valeur de distance à droite
             setServoMotor(&Rightangle, &timeSetAngle);
             RightDistance = getDistance();
-            printf("\n   %d   \n", RightDistance);
-            delay(3000);
+            
+            setServoMotor(&angle, &timeSetAngle);
+            delay(500);
+
             //Comparaison des deux distance
             
             if (LeftDistance>RightDistance) {
                 turnLeft();
-                delay(3000);
+                delay(500);
             }
             else if (LeftDistance<RightDistance) {
                 turnRight();
-                delay(3000);
+                delay(500);
             }
         }
         else if(dist>30){
+            LED(dist);
            moveForward();
         }
             
