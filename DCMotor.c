@@ -82,7 +82,7 @@ void moveBackward() {
 }
 
 
-void turnLeft(int *tempsMouvement) {
+void turnLeft() {
     
     // La rotation est effectuée sur le temps :TPSACTIONMOTEUR
     // Moteur 1
@@ -95,13 +95,13 @@ void turnLeft(int *tempsMouvement) {
     digitalWrite(Motor2InputB,0);
     
     // Arret des moteurs après le temps renseigné
-    delayMicroseconds(*tempsMouvement);
+    delayMicroseconds(500);
     digitalWrite(Motor1Enable,0);
     digitalWrite(Motor2Enable,0);
 
 }
 
-void turnRight(int *tempsMouvement) {
+void turnRight() {
     // La rotation est effectuée sur le temps :TPSACTIONMOTEUR
     // Moteur 1
     digitalWrite(Motor1Enable,1);
@@ -113,7 +113,7 @@ void turnRight(int *tempsMouvement) {
     digitalWrite(Motor2InputB,1);
     
     // Arret des moteurs après le temps renseigné
-    delayMicroseconds(*tempsMouvement);
+    delayMicroseconds(500);
     digitalWrite(Motor1Enable,0);
     digitalWrite(Motor2Enable,0);
 
