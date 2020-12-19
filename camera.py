@@ -1,10 +1,11 @@
 import picamera
+import time
 
 camera = picamera.PiCamera()
 
 camera.resolution = (640, 480)
-camera.start_recording('test_video.h264')
-camera.wait_recording(5)
-camera.stop_recording()
+camera.start_preview()
+time.sleep(2)
+camera.capture('/home/pi/Desktop/PathFinder/Pictures/obstacle.jpg')
 
-print('Finished recording')
+
