@@ -7,6 +7,6 @@ camera = picamera.PiCamera()
 camera.resolution = (2592, 1944)
 camera.start_preview()
 time.sleep(2)
-camera.capture(randow()'/home/pi/Desktop/PathFinder/Pictures/obstacle_time.jpg')
+camera.capture('/home/pi/Desktop/PathFinder/Pictures/obstacle_time.jpg')
 
 
