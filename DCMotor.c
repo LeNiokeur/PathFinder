@@ -27,54 +27,54 @@
 
 // Un L293D est nécessaire afin de piloter les moteurs dans les 2 sens
 
+// A MODIFIER : TPSACTIONMOTEUR s'il est bien reglé
+// Peut etre le sortir du fichier
+
 
 void initializeDCMotors()
 {
-    wiringPiSetup();
-    // Pins vers les moteurs en sortie
-    // Moteur 1
+    // Motor 1
     pinMode(Motor1InputA, OUTPUT);
     pinMode(Motor1InputB, OUTPUT);
     pinMode(Motor1Enable, OUTPUT);
-    // Moteur 2
+    // Motor 2
     pinMode(Motor2InputA, OUTPUT);
     pinMode(Motor2InputB, OUTPUT);
     pinMode(Motor2Enable, OUTPUT);
+
+    // No move
+    digitalWrite(Motor1Enable,0);
+    digitalWrite(Motor2Enable,0);
 }
 
 
 void moveForward() {
     
     // La rotation est effectuée sur le temps :TPSACTIONMOTEUR
-    // Moteur 1
+    // Motor 1
     digitalWrite(Motor1Enable,1);
     digitalWrite(Motor1InputA,1);
     digitalWrite(Motor1InputB,0);
-    // Moteur 2
+    // Motor 2
     digitalWrite(Motor2Enable,1);
     digitalWrite(Motor2InputA,1);
     digitalWrite(Motor2InputB,0);
-    
-    // Arret des moteurs après le temps renseigné
-    //delay(500);
-    //digitalWrite(Motor1Enable,0);
-    //digitalWrite(Motor2Enable,0);
 }
 
 
 void moveBackward() {
     
     // La rotation est effectuée sur le temps :TPSACTIONMOTEUR
-    // Moteur 1
+    // Motor 1
     digitalWrite(Motor1Enable,1);
     digitalWrite(Motor1InputA,0);
     digitalWrite(Motor1InputB,1);
-    // Moteur 2
+    // Motor 2
     digitalWrite(Motor2Enable,1);
     digitalWrite(Motor2InputA,0);
     digitalWrite(Motor2InputB,1);
     
-    // Arret des moteurs après le temps renseigné
+    // Stop motion
     delay(500);
     digitalWrite(Motor1Enable,0);
     digitalWrite(Motor2Enable,0);
@@ -85,16 +85,16 @@ void moveBackward() {
 void turnLeft() {
     
     // La rotation est effectuée sur le temps :TPSACTIONMOTEUR
-    // Moteur 1
+    // Motor 1
     digitalWrite(Motor1Enable,1);
     digitalWrite(Motor1InputA,0);
     digitalWrite(Motor1InputB,1);
-    // Moteur 2
+    // Motor 2
     digitalWrite(Motor2Enable,1);
     digitalWrite(Motor2InputA,1);
     digitalWrite(Motor2InputB,0);
     
-    // Arret des moteurs après le temps renseigné
+    // Stop motion
     delay(500);
     digitalWrite(Motor1Enable,0);
     digitalWrite(Motor2Enable,0);
@@ -103,18 +103,25 @@ void turnLeft() {
 
 void turnRight() {
     // La rotation est effectuée sur le temps :TPSACTIONMOTEUR
-    // Moteur 1
+    // Motor 1
     digitalWrite(Motor1Enable,1);
     digitalWrite(Motor1InputA,1);
     digitalWrite(Motor1InputB,0);
-    // Moteur 2
+    // Motor 2
     digitalWrite(Motor2Enable,1);
     digitalWrite(Motor2InputA,0);
     digitalWrite(Motor2InputB,1);
     
-    // Arret des moteurs après le temps renseigné
+    // Stop motion
     delay(500);
     digitalWrite(Motor1Enable,0);
     digitalWrite(Motor2Enable,0);
 
+}
+
+
+void stopMotors() {
+    // Stop motors
+    digitalWrite(Motor1Enable,0);
+    digitalWrite(Motor2Enable,0);
 }

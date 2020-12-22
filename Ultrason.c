@@ -10,10 +10,10 @@
 #define LEDV 3 
 #define LEDB 2
 
+// A modifier : le calcul de la distance avec travelTime ??
+
  
 void initializeUS_sensor() {
-    // Setup de wiringPi
-    wiringPiSetup();
     // I/O
     pinMode(TRIG, OUTPUT);
     pinMode(ECHO, INPUT);
@@ -26,22 +26,40 @@ void initializeUS_sensor() {
 }
  
 int getDistance() {
+
+    int distance;
+
     // Send trig pulse
     digitalWrite(TRIG, HIGH);
     // Pulse 20 microsec long
     delayMicroseconds(20);
     // Back to LOW
     digitalWrite(TRIG, LOW);
-    // Wait for echo start
-    while(digitalRead(ECHO) == LOW);
+    // Wait for echo start during ~2000 µs
+    int isSignalBack = 0;
+    for (int i = 0; i < 2000; i++) {
+        if (digitalRead(ECHO) == LOW) {
+            isSignalBack = 1;
+            break;
+        }
+        delayMicroseconds(1);
+    }
+    //while(digitalRead(ECHO) == LOW);
+    
+    // If we have an echo we calculate travelTime
+    if (isSignalBack) {
+        //Wait for echo end
+        long startTime = micros();
+        while(digitalRead(ECHO) == HIGH);
+        long travelTime = micros() - startTime;
 
-    //Wait for echo end
-    long startTime = micros();
-    while(digitalRead(ECHO) == HIGH);
-    long travelTime = micros() - startTime;
+        //Get distance in cm
+        distance = travelTime / 58;
+    }
+    else {
+        distance = 1000000;
+    }
 
-    //Get distance in cm
-    int distance = travelTime / 58;
     return distance;
 }
  

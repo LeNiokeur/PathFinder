@@ -13,6 +13,9 @@
 #include <errno.h>
 #include <wiringPi.h>
 
+// A MODIFIER : ajout fonction pour tourner a gauche, droite et centre en restant bloqué sur cette position sans bloquerle programme
+// En utilisant une pin sur laquelle tu peux configurer une PWM qui s'arrete jamais sans bloqué le programme dans une boucle ou autre
+
 #define SERVO 0 //Equivalent WiringPi 0 : GPIO 17
 #define TPSACTIONMOTEUR 500 //Temps en ms pendant lequel le servo moteur prend l'angle spécifié en argument
 
@@ -60,4 +63,25 @@ int setServoMotor(int *angle, int *timeSetAngle)
         delayMicroseconds(left);
     }
     return 0;
+}
+
+
+void setPulse(int *angle) {
+    // Fonction qui doit bloquer le servo moteur avec une PWM avec l'angle passé en paramètre
+    // Cette fonction sera utilisée dans setLeftAngle, setRightAngle, setCenterAngle
+}
+
+void setLeftAngle() {
+    // TODO
+    //setPulse(0);
+}
+
+void setRightAngle() {
+    // TODO
+    //setPulse(180);
+}
+
+void setCenterAngle() {
+    // TODO
+    //setPulse(90);
 }

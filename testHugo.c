@@ -9,11 +9,14 @@
 
 
 int main(int argc, char *argv[]){
-    
+    // Setup de wiringPi
+    wiringPiSetup();
+
     initializeUS_sensor();
     while(1){
+        printf("Test");
         int dist = getDistance();
         printf("La distance : %d", dist);
     }
-
+    return 0;
 }
