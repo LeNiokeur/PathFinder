@@ -6,6 +6,7 @@
 #include "camera_V2.c"
 #include "DCMotor.c"
 #include "Ultrason.c"
+#include "Led.c"
 
 // Include prototype function
 void initialize_AllFunctions();
@@ -20,15 +21,11 @@ int main(int argc, char *argv[]){
     
     // Initialize all sensors and functions
     initialize_AllFunctions();
-
+    
     int leftDistance;
     int rightDistance;
     int centerDistance;
-    int centerAngle = 90;   
-    int leftangle = 0;
-    int rightangle = 180;
-    int timeSetAngle = 500;
-
+    
     while (1)
     {
 
@@ -38,78 +35,68 @@ int main(int argc, char *argv[]){
 *  -         Check left and right for direction       -
 *  ---------------------------------------------------- */
 
-        // Distance sensor back to center
-        setServoMotor(&centerAngle, &timeSetAngle);
-        // Ya deja un temps d'action sur le servoMotor
-        // Double delai ?
-        delay(200);
-        
-        // Left check -90°
-        setServoMotor(&leftangle, &timeSetAngle);
+        // Left check
+        setLeftAngle();
         leftDistance = getDistance();
-        delay(500);
+        delay(100);
         
-        // Je pense que tu peux l'envoyer à droite direct 
-        // sans passer par la position centrale
-        //setServoMotor(&angle, &timeSetAngle);
-        //delay(500);
-       
-        // Right check +90°
-        // Il bloque sur l'angle et mesure la distance ?
-        setServoMotor(&rightangle, &timeSetAngle);
+        // Right check
+        setRightAngle();
         rightDistance = getDistance();
+        delay(100);
         
-        // Back to center position 0°
-        setServoMotor(&centerAngle, &timeSetAngle);
+        // Back to center position
+        setCenterAngle();
+        centerDistance = getDistance();
         delay(100);
 
-        //Compare distance for direction
-// Peut etre ajouter le choix de reculer dès le premier move en supposant qu'il y ait rien derriere...
-        if (leftDistance == rightDistance) {
-            // Ca peut être gauche ou droite donc on va dire droite au hasard
+        //----- Compare distance for direction -------
+        //Move forward if nothing blocks the way
+        if(centerDistance == 1000000){
+            moveForward();
+        }
+        else if (leftDistance == rightDistance) {
+        // It can be right or left so let's say right because right is always right ;)
             turnRight();
-            delay(500);
         }
         else if (leftDistance > rightDistance) {
-            // Dans le turnLeft il y a déja un délai
             turnLeft();
-            delay(500);
         }
         else if (leftDistance < rightDistance) {
             turnRight();
-            // Dans le turnRight il y a déja un delai
-            delay(500);
         }
 
 /* ----------------------------------------------------
 *  -     Move forward until it reaches an obstacle    -
 *  ---------------------------------------------------- */
         
+        // Moving = green LED
+        LedGreen();
+        
         // Start to check distance
         centerDistance = getDistance();
-        // Moving = green light
-        LED(centerDistance);
-        moveForward();
+
         // Move forward until obstacle
         while(centerDistance > 30) {
-        // il faudra afficher la distance dans la console sans spam de milliers de print par seconde...
+// il faudrait afficher la distance dans la console sans spam de milliers de print par seconde...
             //printf("Distance: %dcm\n", dist);
+            
             centerDistance = getDistance();
         }
         // Stop motors
         stopMotors();
         // Stop = red light
-        LED(centerDistance);
+        LedRed();
         // Take a picture
         initializeCamera();   
     // Back to beginning of loop 
     }
 
+    printf("Exiting the loop.\nA problem happened...\n");
     return 0;
 }
 
 void initialize_AllFunctions(){
-
     // Setup de wiringPi
     wiringPiSetup();
 
@@ -121,5 +108,10 @@ void initialize_AllFunctions(){
     
     // Setup ultrasonic sensor
     initializeUS_sensor();
-
+    
+    // Setup servo motor
+    initializeServoMotor();
+    
+    // Setup led
+    initialize_Led();
 }

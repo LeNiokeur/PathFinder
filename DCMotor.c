@@ -50,6 +50,7 @@ void initializeDCMotors()
 
 void moveForward() {
     
+    printf("Forward...\n");
     // La rotation est effectuée sur le temps :TPSACTIONMOTEUR
     // Motor 1
     digitalWrite(Motor1Enable,1);
@@ -73,12 +74,6 @@ void moveBackward() {
     digitalWrite(Motor2Enable,1);
     digitalWrite(Motor2InputA,0);
     digitalWrite(Motor2InputB,1);
-    
-    // Stop motion
-    delay(500);
-    digitalWrite(Motor1Enable,0);
-    digitalWrite(Motor2Enable,0);
-
 }
 
 

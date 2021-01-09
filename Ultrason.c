@@ -7,19 +7,13 @@
 
 #define TRIG 4 // GPIO 23 - pin 16
 #define ECHO 5 // GPIO 24 - pin 18
-#define LEDV 3 
-#define LEDB 2
 
-// A modifier : le calcul de la distance avec travelTime ??
 
- 
 void initializeUS_sensor() {
     // I/O
     pinMode(TRIG, OUTPUT);
     pinMode(ECHO, INPUT);
-    pinMode(LEDV, OUTPUT);
-    pinMode(LEDB, OUTPUT);
-    
+
     //TRIG starts LOW
     digitalWrite(TRIG, LOW);
     delay(30);
@@ -38,7 +32,7 @@ int getDistance() {
     // Wait for echo start during ~2000 µs
     int isSignalBack = 0;
     for (int i = 0; i < 2000; i++) {
-        if (digitalRead(ECHO) == LOW) {
+        if (digitalRead(ECHO) == HIGH) {
             isSignalBack = 1;
             break;
         }
@@ -62,27 +56,10 @@ int getDistance() {
 
     return distance;
 }
- 
 
-// Test distance
-// If less than 20cm => LED is OFF
-// If more than 20cm => LED is ON
-void LED(int distance){
-
-    if(distance < 20){
-        digitalWrite(LEDV, 0);
-        digitalWrite(LEDB, 1);
-
-    }
-    else{
-        digitalWrite(LEDV, 1);
-        digitalWrite(LEDB, 0);
-    
-    }
-}
-
+/*
 int printDistance(){
-    //setup();
+
     while(1)
     {
         int dist=getDistance();
@@ -92,3 +69,5 @@ int printDistance(){
     }
     return 0;
 }
+
+*/
