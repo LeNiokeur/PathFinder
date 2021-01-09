@@ -53,7 +53,7 @@ void setPulse(int angle) {
             break;
         default:
             //Wrong angle sent : back to central position
-            pwmWrite(SERVO, 512);
+            pwmWrite(SERVO, 155);
             break;
     }
 }
