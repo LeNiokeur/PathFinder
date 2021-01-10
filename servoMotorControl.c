@@ -49,6 +49,7 @@ void setPulse(int angle) {
             pwmWrite(SERVO, 155);
             break;
         case 180 :
+            printf("Left angle\n");
             pwmWrite(SERVO, 263);
             break;
         default:

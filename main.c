@@ -37,16 +37,19 @@ int main(int argc, char *argv[]){
 
         // Left check
         setLeftAngle();
+        delay(1000);
         leftDistance = getDistance();
         delay(100);
         
         // Right check
         setRightAngle();
+        delay(1000);
         rightDistance = getDistance();
         delay(100);
         
         // Back to center position
         setCenterAngle();
+        delay(1000);
         centerDistance = getDistance();
         delay(100);
 
