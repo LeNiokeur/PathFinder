@@ -61,13 +61,17 @@ int main(int argc, char *argv[]){
         else if (leftDistance == rightDistance) {
         // It can be right or left so let's say right because right is always right ;)
             turnRight();
+            delay(1000);
         }
         else if (leftDistance > rightDistance) {
             turnLeft();
+            delay(1000);
         }
         else if (leftDistance < rightDistance) {
             turnRight();
+            delay(1000);
         }
+        
 
 /* ----------------------------------------------------
 *  -     Move forward until it reaches an obstacle    -
@@ -83,7 +87,7 @@ int main(int argc, char *argv[]){
         while(centerDistance > 30) {
 // il faudrait afficher la distance dans la console sans spam de milliers de print par seconde...
             //printf("Distance: %dcm\n", dist);
-            
+            moveForward();
             centerDistance = getDistance();
         }
         // Stop motors
